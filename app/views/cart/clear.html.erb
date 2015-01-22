@@ -1,7 +1,7 @@
 <strong>Emtpy shopping cart?</strong>
 <br><br>
 <div style="float: left; width: auto;">
-	<%= button_to 'Cancel', :controller => 'catalog', :action => 'index' %>
+	<%= button_to 'Cancel', {:controller => 'catalog', :action => 'index'}, method: :get %>
 </div>
 <div style="float: left; width: auto;">
 	<%= button_to 'Confirm', { :action => 'clear', :id => params[:id] }, method: :delete %>

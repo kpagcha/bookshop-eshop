@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   get 'catalog' => 'catalog#index', as: :catalog
 
-
   get 'cart/index'
   get 'cart/add'
   get 'cart/remove'
@@ -20,6 +19,10 @@ Rails.application.routes.draw do
   post 'cart/add'
   delete 'cart/remove'
   delete 'cart/clear'
+
+  get 'checkout/index'
+  post 'checkout/submit_order'
+  get 'checkout/completed'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

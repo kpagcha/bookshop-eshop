@@ -1,0 +1,100 @@
+<% if @order.errors.any? %>
+  <div class="alert alert-danger">
+  <h4>The order coult not be submitted.
+  The form has <%= pluralize(@order.errors.count, "error", "errors") %>:</h4>
+    <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <% if msg.include?('Order items ') %>
+          <li><%= msg.gsub('Order items ', '') %></li>
+        <% else %>
+          <li><%= msg %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<p><%= link_to 'Back to shopping cart', :controller => 'checkout' %></p>
+<p><%= link_to 'Back to catalog', :controller => 'catalog' %></p>
+
+<%= form_tag url_for action: 'submit_order' do %>
+  <fieldset>
+    <legend>Contact</legend>
+    <p>
+    	<label for="order_email">Email</label><br/>
+    	<%= text_field :order, :email %>
+    </p>
+    <p>
+    	<label for="order_phone_number">Phone number</label><br/>
+    	<%= text_field :order, :phone_number %>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Shipping</legend>
+    <p>
+    	<label for="order_first_name">First name</label><br/>
+    	<%= text_field :order, :first_name %>
+	  </p>
+    <p>
+    	<label for="order_last_name">Last name</label><br/>
+    	<%= text_field :order, :last_name %>
+    </p>
+    <p>
+    	<label for="order_address">Address</label><br/>
+    	<%= text_field :order, :address %>
+    </p>
+    <p>
+    	<label for="order_city">City</label><br/>
+    	<%= text_field :order, :city %>
+    </p>
+    <p>
+    	<label for="order_postal_code">Postal code</label><br/>
+    	<%= text_field :order, :postal_code %>
+    </p>
+    <p>
+    	<label for="order_country_code">Country</label><br/>
+    	<%= country_select("order", "country_code", selected: "PL") %>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Payment</legend>
+    <p>
+    	<label for="order_card_type">Card type</label><br/>
+    	<select name="order[card_type]" id="order_card_type">
+      		<%= options_for_select(["Visa", "MasterCard", "American Express", "Discover"], @order.card_type) %>
+    	</select>
+    </p>
+    <p>
+    	<label for="order_card_expiration_month">Expiration date</label><br/>
+    	<select name="order[card_expiration_month]">
+      		<%= options_for_select(%w(1 2 3 4 5 6 7 8 9 10 11 12), @order.card_expiration_month) %>
+    	</select>
+    	/
+    	<select name="order[card_expiration_year]">
+      		<%= options_for_select(%w(2014 2015 2016 2017 2018 2019 2020 2021), @order.card_expiration_year) %>
+    	</select>
+    </p>
+    <p>
+    	<label for="order_card_number">Card number</label><br/>
+    	<%= text_field :order, :card_number %>
+    </p>
+    <p>
+      <label for="order_card_verification_value">
+      <abbr title="Card Verification Value">CVV</abbr>/
+      <abbr title="Card Validation Check">CVC</abbr>
+      </label><br/>
+      <%= text_field :order, :card_verification_value %>
+    </p>
+  </fieldset>
+
+  <div class="field">
+    <%= hidden_field :cart, :id %>
+  </div>
+
+  <p>
+  	<%= submit_tag "Submit order" %>
+  </p>
+
+<% end %>

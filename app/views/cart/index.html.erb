@@ -10,6 +10,8 @@
 		<p><strong>Total: <%= sprintf "%0.2f €", @cart.total %></strong></p>
 		<% unless @cart.cart_items.empty? %>
 		  <p>
+		  	<b><%= link_to 'Checkout', :controller => 'checkout', :action => 'index' %></b>
+		  	<br>
 		  	<b><%= link_to 'Empty cart', :controller => 'cart', :action => 'clear' %></b>
 		  </p>
 		<% end %>

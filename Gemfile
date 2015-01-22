@@ -1,5 +1,15 @@
 source 'https://rubygems.org'
 
+# countries list
+gem 'country_select', github: 'stefanpenner/country_select'
+
+# payment
+gem 'activemerchant', "~> 1.44.0", :require => 'active_merchant'
+
+# currency change
+gem 'eu_central_bank', '0.3.5'
+
+# user authentication
 gem 'devise'
 
 gem 'mysql2'

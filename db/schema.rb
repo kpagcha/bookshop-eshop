@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115133018) do
+ActiveRecord::Schema.define(version: 20150122120510) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -75,6 +75,34 @@ ActiveRecord::Schema.define(version: 20150115133018) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_items", force: true do |t|
+    t.integer  "book_id"
+    t.integer  "order_id"
+    t.float    "price",      limit: 24
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_items", ["book_id"], name: "index_order_items_on_book_id", using: :btree
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+
+  create_table "orders", force: true do |t|
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "postal_code"
+    t.string   "country_code"
+    t.string   "customer_ip"
+    t.string   "status"
+    t.string   "error_message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
