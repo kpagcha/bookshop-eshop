@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # for heroku
 gem 'pg', '0.15.1'
+gem 'rails_12factor'
 
 # countries list
 gem 'country_select', github: 'stefanpenner/country_select'
