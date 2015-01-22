@@ -61,8 +61,8 @@ class Order < ActiveRecord::Base
 
     if creditcard.valid?
       gateway = ActiveMerchant::Billing::AuthorizeNetGateway.new(
-        :login     => '8jHK88bQ',
-        :password  => '98yw4Rk4T7nZ2K7B'
+        :login     => '7gxw5j9J5Kne',
+        :password  => '2HD9CbD84Vma76j4'
       )
 
       shipping_address = {
