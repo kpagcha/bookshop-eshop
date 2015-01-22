@@ -1,0 +1,21 @@
+<% if @cart %>
+	<% if @cart.cart_items.count > 0 %>
+	    <ul>
+			<% for item in @cart.cart_items %>
+				<li>
+			      <%= render :partial => 'cart/item', :object => item %>
+			    </li>
+			<% end %>
+		</ul>
+		<p><strong>Total: <%= sprintf "%0.2f €", @cart.total %></strong></p>
+		<% unless @cart.cart_items.empty? %>
+		  <p>
+		  	<b><%= link_to 'Empty cart', :controller => 'cart', :action => 'clear' %></b>
+		  </p>
+		<% end %>
+	<% else %>
+		<p>No shopping cart items yet.</p>
+	<% end %>
+<% else %>
+	<p>No shopping cart was found.</p>
+<% end %>

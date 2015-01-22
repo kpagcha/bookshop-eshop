@@ -1,0 +1,16 @@
+<strong>Add <em><%= @book %></em> to shopping cart?</strong>
+<br><br>
+<%= form_tag 'add' do %>
+	<div class="field">
+		<p><label for="item_amount">Amount</label><br/>
+		<%= text_field_tag 'amount', '1' %></p>
+	</div>
+	<%= hidden_field_tag 'id', params[:id]  %>
+	<div style="float: left; width: auto;">
+		<%= submit_tag 'Confirm', :id => params[:id] %>
+	</div>
+<% end %>
+<div style="float: left; width: auto;">
+	<%= button_to 'Cancel', :controller => 'catalog', :action => 'index', :method => :get %>
+</div>
+<div style="clear:both"></div>

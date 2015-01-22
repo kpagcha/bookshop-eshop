@@ -1,0 +1,23 @@
+Thu, 15 Jan 2015 16:19:20 +0100
+README.rdoc	Thu, 15 Jan 2015 12:13:13 +0100
+app/controllers/admin_controller.rb	Thu, 15 Jan 2015 16:17:33 +0100
+app/controllers/application_controller.rb	Thu, 15 Jan 2015 16:16:32 +0100
+app/controllers/authors_controller.rb	Thu, 15 Jan 2015 16:04:05 +0100
+app/controllers/books_controller.rb	Thu, 15 Jan 2015 16:04:05 +0100
+app/controllers/cart_controller.rb	Thu, 15 Jan 2015 15:45:08 +0100
+app/controllers/catalog_controller.rb	Thu, 15 Jan 2015 13:31:45 +0100
+app/controllers/categories_controller.rb	Thu, 15 Jan 2015 16:03:44 +0100
+app/controllers/home_controller.rb	Thu, 15 Jan 2015 16:15:05 +0100
+app/helpers/application_helper.rb	Thu, 15 Jan 2015 12:13:13 +0100
+app/helpers/authors_helper.rb	Thu, 15 Jan 2015 12:18:21 +0100
+app/helpers/books_helper.rb	Thu, 15 Jan 2015 12:17:51 +0100
+app/helpers/cart_helper.rb	Thu, 15 Jan 2015 14:24:53 +0100
+app/helpers/catalog_helper.rb	Thu, 15 Jan 2015 13:27:41 +0100
+app/helpers/categories_helper.rb	Thu, 15 Jan 2015 12:18:34 +0100
+app/helpers/home_helper.rb	Thu, 15 Jan 2015 12:34:07 +0100
+app/models/admin.rb	Thu, 15 Jan 2015 13:19:22 +0100
+app/models/author.rb	Thu, 15 Jan 2015 16:18:03 +0100
+app/models/book.rb	Thu, 15 Jan 2015 16:18:15 +0100
+app/models/cart.rb	Thu, 15 Jan 2015 16:19:09 +0100
+app/models/cart_item.rb	Thu, 15 Jan 2015 15:16:51 +0100
+app/models/category.rb	Thu, 15 Jan 2015 16:19:18 +0100

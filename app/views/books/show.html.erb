@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @book.price %> €
+</p>
+
+<p>
+  <strong>Publication year:</strong>
+  <%= @book.publication_year %>
+</p>
+
+<p>
+	<strong>Categories:</strong>
+	<%= @book.categories.join(", ") %>
+</p>
+
+<p>
+	<strong>Authors:</strong>
+	<%= @book.authors.join(", ") %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>

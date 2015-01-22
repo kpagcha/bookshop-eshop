@@ -1,0 +1,45 @@
+<%= form_for(@book) do |f| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price, step: 'any' %>
+  </div>
+  <div class="field">
+    <%= f.label :publication_year %><br>
+    <%= f.number_field :publication_year %>
+  </div>
+  <div class="field">
+    <%= f.label :categories %><br>
+    <% if Category.count > 0 %>
+      <%= collection_select(:book, :category_ids, Category.all, :id, :name, {}, { :multiple => true, :size => (Category.count < 5 ? Category.count : 5) }) %>
+    <% else %>
+      <p>No categories found yet.</p>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :authors %><br>
+    <% if Author.count > 0 %>
+      <%= collection_select(:book, :author_ids, Author.all, :id, :name, {}, { :multiple => true, :size => (Author.count < 5 ? Author.count : 5) }) %>
+    <% else %>
+      <p>No authors found yet.</p>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,5 @@
+<p><%= item.book %></p>
+
+<%= pluralize item.amount, "unit", "units" %>, <%= sprintf "%0.2f €", item.price*item.amount %>
+
+(<%= link_to '-', {:controller => 'cart', :action => 'remove', :id => item.book}, :style =>'font-size: 20px;' %>)
