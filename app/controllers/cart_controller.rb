@@ -26,13 +26,13 @@ class CartController < ApplicationController
       if @cart.cart_items.find_by_book_id(params[:id].to_i).amount - params[:amount].to_i >= 0
         @item = @cart.remove(params[:id], params[:amount].to_i)
         flash[:notice] = "#{params[:amount]} #{@item.book.title} deleted"
-        redirect_to :controller => 'catalog'
+        redirect_to action: 'index'
       else
         flash[:notice] = "Invalid amount"
-        render :controller => 'cart', :action => 'remove', :template => 'cart/remove'
+        render :controller => 'cart', :action => 'remove'
       end
     else
-      render :controller => 'cart', :action => 'remove', :template => 'cart/remove'
+      render :controller => 'cart', :action => 'remove'
     end
   end
 

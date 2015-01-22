@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 gem 'pg', '0.15.1'
 gem 'rails_12factor'
 
+# pagination
+gem 'will_paginate'
+
 # countries list
 gem 'country_select', github: 'stefanpenner/country_select'
 

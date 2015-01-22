@@ -24,6 +24,11 @@ Rails.application.routes.draw do
   post 'checkout/submit_order'
   get 'checkout/completed'
 
+
+  get 'order/index'
+  get 'order/show'
+  post 'order/close'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,47 @@
+<%= render :partial => 'nav' %>
+
+<div style="margin-bottom:30px">
+<h3>Total: <b><%= @order.total %></b> €</h3>
+
+<h2>Contact</h2>
+<dl>
+  <dt>Email</dt>
+  <dd><%= @order.email %></dd>
+  <dt>Phone number</dt>
+  <dd><%= @order.phone_number %></dd>
+</dl>
+
+<h2>Shipping address</h2>
+<dl>
+  <dt>First name</dt>
+  <dd><%= @order.first_name %></dd>
+  <dt>Last name</dt>
+  <dd><%= @order.last_name %></dd>
+  <dt>Address</dt>
+  <dd><%= @order.address %></dd>
+  <dt>City</dt>
+  <dd><%= @order.city %></dd>
+  <dt>Postal Code</dt>
+  <dd><%= @order.postal_code %></dd>
+  <dt>Country</dt>
+  <dd><%= ISO3166::Country.find_country_by_alpha2(@order.country_code).name %></dd>
+</dl>
+
+<h2>Order details</h2>
+<% for item in @order.order_items %>
+  <%= link_to item.book, book_path(id: item.book.id) %>
+  <%= pluralize(item.amount, "book", "books") %>, <%= item.price * item.amount %> €<br/>
+<% end %>
+
+<h2>Order status</h2>
+<dl>
+  <dt>Status</dt>
+  <dd><%= @order.status %></dd>
+  <% if @order.failed? %>
+    <dt>Error</dt>
+    <dd><%= @order.error_message %></dd>
+  <% end %>
+</dl>
+
+<%= button_to 'Cerrar pedido', {:action => 'close', :id => @order}, :confirm => "Close order ##{@order.id}?"  if @order.processed? %>
+</div>

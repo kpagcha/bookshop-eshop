@@ -1,0 +1,42 @@
+<%= render :partial => 'nav' %>
+
+<% if @orders.empty? %>
+  <h3><%= "No #{@status} orders found." %></h3>
+<% else %>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>State</th>
+      <th>Total (€)</th>
+      <th>Books</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th></th>
+    </tr>
+  <% for order in @orders %>
+    <tr>
+      <td ><%= order.id %></td>
+      <td ><%= order.status %></td>
+      <td ><%= sprintf("%.2f", order.total) %></td>
+      <td>
+      	<ul style="list-style-type: none;padding-left:0px">
+	      <% order.order_items.each do |order_item| %>
+	      	<li><%= order_item %></li>
+	      <% end %>
+	    </ul>
+      </td>
+      <td ><%= order.created_at.localtime.strftime("%d-%m-%Y %H:%M") %></td>
+      <td ><%= order.updated_at.localtime.strftime("%d-%m-%Y %H:%M") %></td>
+      <td><%= link_to 'Show', :action => 'show', :id => order %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <% if @orders.total_pages > 1 %>
+    <br/>
+    <%= 'Page: ' %>
+    <%= will_paginate @orders, :page_links => true, :link_separator => ' ', :container => false, :previous_label => '<', :next_label => '>' %>
+  <% end %>
+
+  <p></p>
+<% end %>

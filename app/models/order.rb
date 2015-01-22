@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
   attr_accessor :card_type, :card_number, :card_expiration_month, :card_expiration_year, :card_verification_value
 	
   accepts_nested_attributes_for :order_items
+
   validates_presence_of :order_items, :message => 'Your shopping cart is empty!'
   validates_format_of :email, :with =>  /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   validates_length_of :phone_number, :in => 7..20
@@ -26,7 +27,7 @@ class Order < ActiveRecord::Base
   validates_length_of :card_verification_value, :in => 3..4, :on => :create
 
   def total
-  	order_items.inject(0) { |sum, n| n.price * n.amount + sum }
+    order_items.inject(0) { |sum, n| n.price * n.amount + sum }
   end
 
   def process
