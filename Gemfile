@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # for heroku
-gem 'pg'
+gem 'pg', '0.15.1'
 
 # countries list
 gem 'country_select', github: 'stefanpenner/country_select'
